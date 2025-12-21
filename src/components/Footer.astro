@@ -1,0 +1,55 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default {...Astro.props}>
+  <slot />
+</Default>
+
+<div class="footer-container">
+    <div class="separator"></div>
+    <p class="system-status">
+        <span class="blink">🟢</span> SYSTEM ONLINE  
+        <span class="divider">|</span> 
+        INDEPENDENT SYSTEM ENGINEER
+        <span class="divider">|</span> 
+        © 2025 NEVIN SHINE
+    </p>
+</div>
+
+<style>
+    .footer-container {
+        margin-top: 3rem;
+        text-align: center;
+        font-family: var(--sl-font-mono); /* Uses your code font */
+    }
+
+    .separator {
+        border-top: 1px solid var(--sl-color-hairline);
+        margin-bottom: 1.5rem;
+        opacity: 0.5;
+    }
+
+    .system-status {
+        font-size: 0.75rem;
+        color: var(--sl-color-gray-3);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .divider {
+        margin: 0 10px;
+        color: var(--sl-color-accent); /* Green dividers */
+    }
+
+    /* Make the green dot blink like a server light */
+    .blink {
+        animation: blinker 2s linear infinite;
+        margin-right: 5px;
+    }
+
+    @keyframes blinker {
+        50% { opacity: 0; }
+    }
+</style>

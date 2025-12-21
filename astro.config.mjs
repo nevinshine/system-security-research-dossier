@@ -8,6 +8,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Research Dossier',
+
+      components: {
+        Footer: './src/components/Footer.astro',
+      },
       
       // FIXED: The property MUST be 'href'
       social: [
