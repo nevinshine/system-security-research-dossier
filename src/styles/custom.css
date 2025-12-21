@@ -1,0 +1,125 @@
+/* src/styles/custom.css */
+
+/* =========================================
+   1. DARK MODE (THE "HACKER" THEME)
+   ========================================= */
+[data-theme='dark'] {
+  --sl-color-bg: #050505;
+  --sl-color-bg-nav: #050505;
+  --sl-color-bg-sidebar: #0a0a0a;
+
+  /* Bright Green for Dark Mode */
+  --sl-color-accent-low: #022c22;
+  --sl-color-accent: #34d399;      
+  --sl-color-accent-high: #a7f3d0;
+  
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e5e5e5;
+  --sl-color-gray-2: #a3a3a3;
+
+  --sl-color-bg-inline-code: #1a1a1a;
+  --sl-color-text-inline-code: #34d399;
+}
+
+/* =========================================
+   2. LIGHT MODE (THE "ACADEMIC" THEME)
+   ========================================= */
+[data-theme='light'] {
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f8f9fa;
+
+  /* Deep Emerald for Light Mode */
+  --sl-color-accent-low: #d1fae5;
+  --sl-color-accent: #059669;      
+  --sl-color-accent-high: #047857;
+  
+  --sl-color-white: #171717;
+  --sl-color-gray-1: #262626;
+  --sl-color-gray-2: #525252;
+  
+  --sl-color-bg-inline-code: #f3f4f6;
+  --sl-color-text-inline-code: #047857;
+}
+
+/* =========================================
+   3. GLOBAL SETTINGS (FONTS & SHAPES)
+   ========================================= */
+:root {
+  --sl-font-system-mono: 'Fira Code', 'Courier New', monospace;
+  --sl-font-body: 'Fira Code', 'Courier New', monospace; 
+  --sl-font-headers: 'Fira Code', 'Courier New', monospace;
+  
+  --sl-border-radius-large: 2px;
+  --sl-border-radius-medium: 2px;
+  --sl-border-radius-small: 1px;
+}
+
+/* =========================================
+   4. BUTTONS (STATIC & STABLE)
+   ========================================= */
+.action.primary {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Dark Mode Button */
+[data-theme='dark'] .action.primary {
+    background-color: #34d399 !important;
+    color: #000000 !important;
+    border: 1px solid #34d399 !important;
+    font-weight: 800 !important;
+}
+
+/* Light Mode Button */
+[data-theme='light'] .action.primary {
+    background-color: #059669 !important;
+    color: #ffffff !important;
+    border: 1px solid #059669 !important;
+    font-weight: 700 !important;
+}
+
+/* Remove Secondary Button Background */
+.action.secondary {
+    background: transparent !important;
+    text-decoration: none;
+}
+
+/* =========================================
+   5. CARDS (GRID ALIGNMENT ONLY)
+   ========================================= */
+.card {
+    height: 100% !important; /* Forces equal height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Force Card Borders */
+[data-theme='dark'] .card { border: 1px solid #333 !important; }
+[data-theme='light'] .card { border: 1px solid #e5e5e5 !important; }
+
+/* =========================================
+   6. FINAL POLISH (FORCE UNIFORM GREEN)
+   ========================================= */
+
+/* Force Title Colors */
+[data-theme='dark'] .site-title { color: #34d399 !important; }
+[data-theme='light'] .site-title { color: #059669 !important; }
+
+/* --- THE ICON FIX --- */
+/* We override Starlight's internal color variables for icons globally */
+:root {
+    --sl-icon-color-default: var(--sl-color-accent) !important;
+    --sl-icon-color-accent: var(--sl-color-accent) !important;
+}
+
+/* We also force the SVG container to be transparent and use the current text color */
+.card .icon {
+    background-color: transparent !important;
+    color: var(--sl-color-accent) !important;
+}
+
+/* Theme toggle icon color fix */
+starlight-theme-select button {
+    color: var(--sl-color-gray-2) !important;
+}

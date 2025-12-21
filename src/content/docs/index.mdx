@@ -1,40 +1,23 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Research Dossier
+description: Technical documentation for 100 Days of DevSecOps and Sentinel Sandbox.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: "Technical documentation for 100 Days of DevSecOps & Sentinel Sandbox."
   image:
-    file: ../../assets/houston.webp
+    html: |
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--sl-color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 250px; height: 250px; opacity: 0.9; filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.4));">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 8v4"/>
+        <path d="M12 16h.01"/>
+      </svg>
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Access Logbook
+      link: /research-logs/100-days/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+      variant: primary
+    - text: View Sentinel
+      link: /research-logs/sentinel/
       icon: external
-      variant: minimal
+      variant: secondary
 ---
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>

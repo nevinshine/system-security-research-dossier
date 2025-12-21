@@ -1,26 +1,34 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  site: 'https://nevinshine.github.io',
+  base: '/research-logs',
+
+  integrations: [
+    starlight({
+      title: 'Research Dossier',
+      
+      // FIXED: The property MUST be 'href'
+      social: [
+        {
+          label: 'GitHub',
+          href: 'https://github.com/nevinshine',
+          icon: 'github',
+        },
+      ],
+      customCss: ['./src/styles/custom.css'],
+
+      sidebar: [
+        {
+          label: '100 Days of DevSecOps',
+          autogenerate: { directory: '100-days' },
+        },
+        {
+          label: 'Sentinel Sandbox',
+          autogenerate: { directory: 'sentinel' },
+        },
+      ],
+    }),
+  ],
 });
