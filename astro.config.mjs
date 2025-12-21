@@ -21,12 +21,12 @@ export default defineConfig({
 
       sidebar: [
         {
-          label: '100 Days of DevSecOps',
-          autogenerate: { directory: '100-days' },
-        },
-        {
-          label: 'Sentinel Sandbox',
-          autogenerate: { directory: 'sentinel' },
+          label: 'Research Logbook',
+          items: [
+            // CHANGE THIS LINK:
+            { label: '100 Days of DevSecOps', link: '/100-days/' },
+            { label: 'Sentinel Sandbox', link: '/sentinel/' },
+          ],
         },
       ],
     }),
