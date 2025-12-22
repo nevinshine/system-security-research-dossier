@@ -157,6 +157,5 @@ This architecture prioritizes:
 
 Sentinel Sandbox is intentionally designed as a **research platform** for studying kernel-level behavior and lightweight anomaly detection.
 
-```
-
+---
 

@@ -93,4 +93,4 @@ The focus of this phase was **architecture validation**, not metric optimization
 - Study anomaly scoring rather than classification accuracy
 - Perform controlled experiments on normal vs abnormal program behavior
 
-```
+---
