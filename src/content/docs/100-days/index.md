@@ -13,6 +13,7 @@ sidebar:
 
 | Day | Topic | Description | Status |
 | :--- | :--- | :--- | :--- |
+| **Day 11** | Anomaly Score Validation | Kernel-Level Score Interpretation & Stability Analysis | <span style="color:#39FF14; font-weight:bold;">Completed</span> |
 | **Day 10** | Temporal Feature Engineering | Improving Syscall Anomaly Detection via Temporal Bucketing | <span style="color:#39FF14; font-weight:bold;">Completed</span> |
 | **Day 09** | Research Consolidation | Sentinel Sandbox Architecture & Understanding | <span style="color:#39FF14; font-weight:bold;">Completed</span> |
 | **Day 08** | AI Anomaly Detection | CPU-Optimized Weightless Neural Network | <span style="color:#39FF14; font-weight:bold;">Completed</span> |
@@ -27,6 +28,59 @@ sidebar:
 ---
 
 ## Detailed Operations Log
+
+### Day 11: Kernel Anomaly Score Validation & Interpretation
+**Context**  
+By Day 10, Sentinel Sandbox successfully generated anomaly scores from live kernel syscall traces using a temporally bucketed representation and a CPU-only Weightless Neural Network (DWN).  
+Day 11 focused on validating the *meaning* and *stability* of these scores rather than extending the architecture.
+**Objective**  
+To confirm that the anomaly scores:
+- Are structurally stable across runs
+- Reflect differences in kernel behavior
+- Can be interpreted statistically (not as hard classifications)
+**Work Performed**
+- Re-ran training and scoring pipelines end-to-end
+- Verified preprocessing invariants:
+  - Fixed input dimensionality (**43,008 bits**)
+  - No histogram expansion from unknown syscalls
+  - Deterministic temporal bucketing
+- Scored syscall traces from:
+  - Normal interactive shell usage
+  - Abnormal syscall-heavy executions
+**Observations**
+
+- **Normal Discriminator**
+  - Consistently positive mean response
+  - Indicates strong memorization of benign syscall patterns
+
+- **Attack Discriminator**
+  - Suppressed or negative response
+  - Expected due to normal-only training regime
+
+- **Anomaly Score (Normal − Attack)**
+  - Positive mean for normal behavior
+  - Large variance, expected at prototype scale
+  - Clear distribution shift between normal and abnormal traces
+
+**Interpretation**
+- The system behaves as a **statistical anomaly detector**
+- No explicit thresholding is applied at this stage
+- Scores must be interpreted relative to learned benign behavior
+- This aligns with classical IDS design principles
+
+**What Was Intentionally Deferred**
+- Threshold calibration
+- False-positive rate tuning
+- ROC / precision–recall evaluation
+
+**Outcome**  
+Sentinel Sandbox now demonstrates:- End-to-end kernel-level anomaly scoring
+- Stable and interpretable score distributions
+- Readiness for the next research phase: **threshold calibration and false-positive analysis**
+
+**Status**  
+**Completed**
+
 
 ### Day 10: Temporal Feature Engineering (Research)
 - **Context:**  
