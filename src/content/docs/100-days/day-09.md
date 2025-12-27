@@ -5,14 +5,14 @@ sidebar:
   order: 10
 ---
 
-### // Objective
+### Objective
 **To slow down and consolidate understanding after building a complex kernel + ML system.**
 
 After completing a full end-to-end prototype (Sentinel Sandbox), the goal of Day 09 was **not to add new features**, but to ensure that the system, its assumptions, and its limitations were clearly understood and documented.
 
 ---
 
-### // Context
+### Context
 The previous days involved:
 - Linux kernel syscall tracing using `ptrace`
 - Behavioral data representation
@@ -24,7 +24,7 @@ Day 09 was intentionally dedicated to **reflection, documentation, and clarifica
 
 ---
 
-### // What I Did
+### What I Did
 - Reviewed the **complete Sentinel Sandbox pipeline**:
   - Program execution → syscall interception → data encoding → ML decision
 - Rewrote project documentation to match **actual implementation**, removing overclaims
@@ -37,7 +37,7 @@ Day 09 was intentionally dedicated to **reflection, documentation, and clarifica
 
 ---
 
-### // Key Learnings
+### Key Learnings
 - Complex systems require **documentation pauses** to convert work into understanding
 - Writing explanations exposes gaps faster than writing code
 - Research progress is non-linear: building first, understanding later is normal
@@ -45,7 +45,7 @@ Day 09 was intentionally dedicated to **reflection, documentation, and clarifica
 
 ---
 
-### // Outcome
+### Outcome
 - Sentinel Sandbox documentation is now:
   - Technically accurate
   - Research-advisor safe
@@ -55,7 +55,7 @@ Day 09 was intentionally dedicated to **reflection, documentation, and clarifica
 
 ---
 
-### // Status
+### Status
 <span style="color:#39FF14; font-weight:bold;">Completed</span>
 
 ---

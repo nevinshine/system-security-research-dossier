@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-### // Project Overview
+### Project Overview
 **Sentinel Sandbox** is a research-oriented runtime analysis system designed to study **program behavior at the Linux kernel level** using system call (syscall) monitoring and lightweight machine learning.
 
 Unlike traditional antivirus software that relies on static file signatures (hashes), Sentinel observes **how a program behaves at runtime** by intercepting its interactions with the Linux kernel.
@@ -14,7 +14,7 @@ The system focuses on **behavioral anomaly detection**, rather than signature ma
 
 ---
 
-### // Core Hypothesis
+### Core Hypothesis
 > *"Malicious behavior is better characterized by how a program interacts with the kernel than by how its code appears on disk."*
 
 All programs—benign or malicious—must request services from the kernel using system calls (e.g., `open`, `read`, `write`, `execve`).  
@@ -32,7 +32,7 @@ Sentinel treats syscall activity as a **behavioral signal**, not a signature.
 
 ---
 
-### // Technology Stack
+### Technology Stack
 
 | Component | Technology | Purpose |
 | :--- | :--- | :--- |
@@ -45,7 +45,7 @@ Sentinel treats syscall activity as a **behavioral signal**, not a signature.
 
 ---
 
-### // Research Goals
+### Research Goals
 1. **Behavioral Detection:**  
    Detect anomalous program execution based on syscall behavior rather than file signatures.
 
@@ -60,7 +60,7 @@ Sentinel treats syscall activity as a **behavioral signal**, not a signature.
 
 ---
 
-### // Research Status
+### Research Status
 - ✔ Syscall interception validated on real Linux programs
 - ✔ End-to-end pipeline from kernel tracing to ML training completed
 - ✔ Differentiable Weightless Neural Network (DWN) integrated
@@ -68,7 +68,7 @@ Sentinel treats syscall activity as a **behavioral signal**, not a signature.
 
 ---
 
-### // Scope & Intent
+### Scope & Intent
 Sentinel Sandbox is a **research and learning platform**, not a production malware sandbox.
 
 Its primary purpose is to:
@@ -78,7 +78,7 @@ Its primary purpose is to:
 
 ---
 
-### // Experimental Finding: Temporal Structure Matters
+### Experimental Finding: Temporal Structure Matters
 Initial experiments using syscall frequency histograms showed limited separation between benign and abnormal executions. While syscall counts capture *what* operations occur, they fail to capture *when* they occur.
 
 To address this, Sentinel introduced **temporal bucketing**, where each syscall window is divided into ordered segments and processed independently.
@@ -90,7 +90,7 @@ Effective syscall-based detection depends more on **behavioral representation** 
 
 ---
 
-### // Runtime Anomaly Classification (Threshold-Calibrated)
+### Runtime Anomaly Classification (Threshold-Calibrated)
 
 After training the Weightless Neural Network (DWN) on **normal syscall behavior only**, Sentinel introduces a **statistical decision layer** to convert raw model scores into actionable security signals.
 
@@ -132,4 +132,4 @@ On live syscall traces:
 **Key Insight:**  
 Accurate behavioral detection depends more on **representation and calibration** than on model complexity.
 
----
+

@@ -5,10 +5,10 @@ sidebar:
   order: 6
 ---
 
-### // Objective
+### Objective
 To establish a "Chain of Custody" for system integrity. By generating SHA-256 hashes of critical configuration files, we can mathematically prove whether a file has been tampered with by an attacker (or a rogue admin).
 
-### // The Tripwire Script (`tripwire.sh`)
+### The Tripwire Script (`tripwire.sh`)
 
 This script acts as a manual File Integrity Monitor (FIM). It has two modes:
 1.  **`init`**: Creates the trusted "Baseline" (Gold Standard).
@@ -77,7 +77,7 @@ esac
 
 ```
 
-### // Technical Breakdown
+### Technical Breakdown
 
 1. **SHA-256 Hashing**: We use `sha256sum` because it is computationally infeasible to modify a file and keep the same hash (Collision Resistance). MD5 is considered broken and unsafe for this purpose.
 2. **Exit Codes (`$?`)**: The script relies on the return code of the `sha256sum -c` command. In Linux automation, an exit code of `0` always means success, while anything else indicates an error (or in this case, a security breach).
@@ -87,7 +87,7 @@ esac
 
 
 
-### // Execution
+### Execution
 
 ```bash
 chmod +x tripwire.sh

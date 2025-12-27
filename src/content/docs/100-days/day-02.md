@@ -5,10 +5,10 @@ sidebar:
   order: 3
 ---
 
-### // Objective
+### Objective
 To master the **Linux Process Lifecycle**, understanding how to identify resource-hogging daemons and safely terminate rogue processes using proper UNIX signals.
 
-### // Core Monitoring Tools
+### Core Monitoring Tools
 
 #### 1. Real-Time Telemetry (`top`)
 The standard dashboard for system load.
@@ -22,7 +22,7 @@ A graphical ncurses-based viewer.
 - Allows scrolling through the process tree.
 - Visual bars for CPU/RAM usage per core.
 
-### // Process Discovery (`ps`)
+### Process Discovery (`ps`)
 Understanding the "Process Snapshot" command (`ps`).
 
 ```bash
@@ -38,7 +38,7 @@ ps aux | grep ssh
 * **u** = user/owner column
 * **x** = processes not attached to a terminal (daemons)
 
-### // Termination Protocols (Signals)
+### Termination Protocols (Signals)
 
 In Linux, you don't "kill" a process; you send it a **signal**.
 
@@ -47,9 +47,8 @@ In Linux, you don't "kill" a process; you send it a **signal**.
 | `kill <PID>` | **SIGTERM (15)** | The "Polite" Kill | Asks the process to stop. Allows it to save data and close files. |
 | `kill -9 <PID>` | **SIGKILL (9)** | The "Force" Kill | The kernel immediately rips the process from memory. Risk of data corruption. |
 
-### // Research Note
+### Research Note
 
 Always attempt **SIGTERM (15)** first. Only use **SIGKILL (9)** if a process is zombie/unresponsive.
 
-```
 

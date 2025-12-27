@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-### // Objective
+### Objective
 **To explore lightweight, behavior-based anomaly detection without deep neural networks.**
 
 Modern AI security often depends on heavy deep-learning models (CNNs, LSTMs, Transformers) that require GPUs and large datasets.  
@@ -18,7 +18,7 @@ The full research prototype and experiments are maintained here:
 
 ---
 
-### // The Architecture: Dynamic Weightless Network (DWN)
+### The Architecture: Dynamic Weightless Network (DWN)
 
 A **Weightless Neural Network (WNN)** does not rely on floating-point multiplications or learned weights.  
 Instead, it operates using **lookup tables (RAM nodes)** that map binary input patterns to stored responses.
@@ -27,7 +27,7 @@ In this work, I explored a **Dynamic Weightless Network (DWN)** variant that all
 
 ---
 
-### // Key Engineering Decisions
+### Key Engineering Decisions
 
 #### 1. Thermometer Encoding
 - **Problem:** Raw numerical values and frequency counts do not translate well into binary representations.
@@ -61,7 +61,7 @@ This allows:
 
 ---
 
-### // Experimental Setup
+### Experimental Setup
 
 - **Dataset:** UNSW-NB15 (used as an initial controlled benchmark)
 - **Model:** Multi-discriminator DWN (Normal vs Attack)
@@ -72,7 +72,7 @@ The focus of this phase was **architecture validation**, not metric optimization
 
 ---
 
-### // Observations & Learnings
+### Observations & Learnings
 
 - Weightless models can learn **behavioral patterns** without deep neural networks.
 - Binary encodings strongly influence model stability and learning quality.
@@ -81,16 +81,15 @@ The focus of this phase was **architecture validation**, not metric optimization
 
 ---
 
-### // Reflection (Honest)
+### Reflection (Honest)
 > This work represents an **exploratory research phase**.  
 > My understanding is currently **conceptual and surface-level**, but structured.  
 > The main outcome is clarity on how kernel behavior, binary representations, and lightweight ML models connect.
 
 ---
 
-### // Next Steps
+### Next Steps
 - Integrate DWN input directly with **real Linux syscall traces** via `ptrace`
 - Study anomaly scoring rather than classification accuracy
 - Perform controlled experiments on normal vs abnormal program behavior
 
----

@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-### // The Interception Pipeline
+### The Interception Pipeline
 
 At the core of Sentinel Sandbox is a **user-space syscall interceptor**, implemented in C using the Linux `ptrace` API.  
 The interceptor observes **runtime behavior** by pausing a program at system call boundaries and recording syscall identifiers.
@@ -88,7 +88,7 @@ This file represents the **ground-truth behavioral trace** of a program.
 
 ---
 
-## // Behavior Processing Pipeline
+## Behavior Processing Pipeline
 
 Raw syscall sequences are not directly suitable for machine learning. Sentinel applies a deterministic transformation pipeline to convert syscall traces into structured inputs.
 
@@ -110,7 +110,7 @@ Histogram counts are transformed into **thermometer-encoded binary vectors**:
 
 ---
 
-## // AI Integration Strategy (The “Brain”)
+## AI Integration Strategy (The “Brain”)
 
 Sentinel uses a **Weightless Neural Network (WiSARD-style)** architecture rather than deep learning.
 
@@ -147,7 +147,7 @@ This framing supports **one-class anomaly detection**, where only benign behavio
 
 ---
 
-### // Architectural Intent
+### Architectural Intent
 
 This architecture prioritizes:
 
@@ -157,5 +157,5 @@ This architecture prioritizes:
 
 Sentinel Sandbox is intentionally designed as a **research platform** for studying kernel-level behavior and lightweight anomaly detection.
 
----
+
 

@@ -5,10 +5,10 @@ sidebar:
   order: 4
 ---
 
-### // Objective
+### Objective
 To build a surveillance script (`net_sentry.sh`) that identifies "Open Doors" in the system—specifically listening ports that could serve as entry vectors for attackers.
 
-### // The Sentry Script (`net_sentry.sh`)
+### The Sentry Script (`net_sentry.sh`)
 
 This script audits the network stack using `ss` (Socket Statistics), flagging dangerous protocols (Telnet) and global exposure (`0.0.0.0`).
 
@@ -62,9 +62,7 @@ echo "Scan Complete. View $LOG_FILE"
 
 ```
 
-### // Findings & Analysis
+### Findings & Analysis
 
 * **0.0.0.0 vs 127.0.0.1**: The script successfully differentiates between local-only services and public-facing ones.
 * **Process Identification**: The `-p` flag in `ss` is critical; without `sudo`, it cannot reveal which PID owns the port, leaving the auditor blind.
-
-```

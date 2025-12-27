@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-### // Context
+### Context
 
 By the end of Day 10, **Sentinel Sandbox** successfully produced stable anomaly scores using a temporally bucketed syscall representation and a CPU-only Dynamic Weightless Network (DWN).
 
@@ -17,7 +17,7 @@ The goal was to confirm that the observed anomaly scores were:
 
 ---
 
-### // What Was Done
+### What Was Done
 
 - Re-ran **training and scoring pipelines** on live `ptrace` syscall traces
 - Verified preprocessing guarantees:
@@ -30,7 +30,7 @@ The goal was to confirm that the observed anomaly scores were:
 
 ---
 
-### // Observed Behavior
+### Observed Behavior
 
 #### Normal Discriminator
 - Produces consistently **positive mean responses**
@@ -47,7 +47,7 @@ The goal was to confirm that the observed anomaly scores were:
 
 ---
 
-### // Interpretation
+### Interpretation
 
 The system currently behaves as a **statistical anomaly detector**, not a binary classifier.
 
@@ -57,7 +57,7 @@ The system currently behaves as a **statistical anomaly detector**, not a binary
 
 ---
 
-### // Key Insight
+### Key Insight
 
 > Anomaly detection systems should be evaluated by **score distributions**, not accuracy metrics.
 
@@ -67,7 +67,7 @@ At this stage:
 
 ---
 
-### // What Was Intentionally Not Done
+### What Was Intentionally Not Done
 
 - No threshold calibration
 - No ROC or false-positive tuning
@@ -77,7 +77,7 @@ These steps are deferred to preserve scientific correctness.
 
 ---
 
-### // Outcome
+### Outcome
 
 Sentinel Sandbox now demonstrates:
 - End-to-end kernel-level anomaly scoring
@@ -88,6 +88,6 @@ The system is ready for the next phase: **threshold calibration and false-positi
 
 ---
 
-### // Status
+### Status
 
 <span style="color:#39FF14; font-weight:bold;">Completed</span>

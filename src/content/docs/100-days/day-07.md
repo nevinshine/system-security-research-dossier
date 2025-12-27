@@ -5,20 +5,20 @@ sidebar:
   order: 8
 ---
 
-### // Mission
+### Mission
 **Operation Counter-Strike:** Automate the defense loop. Instead of just blocking ports, we deploy an active sentry that bans IP addresses showing malicious intent.
 
-### // The Problem
+### The Problem
 Even with SSH Keys (Day 6), bots can flood the server with thousands of connection attempts per hour.
 * **Resource Drain:** Each handshake consumes CPU/RAM.
 * **Log Pollution:** Thousands of "Failed Password" lines make it hard to spot real attacks.
 
-### // The Solution: Fail2Ban
+### The Solution: Fail2Ban
 **Fail2Ban** is an Intrusion Prevention Framework that monitors log files in real-time and dynamically updates firewall rules to punish offenders.
 
 
 
-### // Configuration Strategy
+### Configuration Strategy
 Installed `fail2ban` and configured a local jail (`/etc/fail2ban/jail.local`) to override defaults without breaking updates.
 
 | Setting | Value | Reason |
@@ -28,13 +28,13 @@ Installed `fail2ban` and configured a local jail (`/etc/fail2ban/jail.local`) to
 | `backend` | `systemd` | Monitors system logs efficiently. |
 | `action` | `iptables-multiport` | Blocks the attacker on ALL ports, not just SSH. |
 
-### // The "Sniper" Logic
+### The "Sniper" Logic
 1.  **Surveillance:** Fail2Ban scans `/var/log/auth.log` (or journald) using regex.
 2.  **Trigger:** It detects patterns like `Failed password for root from <IP>`.
 3.  **Action:** Once the `maxretry` threshold (3) is hit, it executes a `ban` action.
 4.  **Enforcement:** It injects a `REJECT` rule into `iptables` / `ufw` specifically for that IP.
 
-### // Verification Log
+### Verification Log
 To prove the system works, we ran a manual simulation:
 
 ```bash
@@ -59,11 +59,11 @@ Status for the jail: sshd
 
 ```
 
-### // Key Takeaway
+### Key Takeaway
 
 > "Security automation is the only way to scale."
 
 We cannot watch logs 24/7. Fail2Ban acts as the automated immune system, isolating threats before they consume resources.
 
-```
+
 

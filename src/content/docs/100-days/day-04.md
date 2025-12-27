@@ -5,10 +5,10 @@ sidebar:
   order: 5
 ---
 
-### // Objective
+### Objective
 To move from "Passive Observation" to "Active Defense" by implementing a **Default Deny** firewall policy. We automate `UFW` (Uncomplicated Firewall) to reject all unsolicited traffic while ensuring SSH access remains open.
 
-### // The Hardening Script (`setup_firewall.sh`)
+### The Hardening Script (`setup_firewall.sh`)
 
 This script resets the firewall to a known safe state, denies all incoming connections by default, and automates the activation prompt using `echo`.
 
@@ -37,12 +37,12 @@ sudo ufw status verbose
 
 ```
 
-### // Technical Breakdown
+### Technical Breakdown
 
 1. **`default deny incoming`**: This is the core security layer. It ensures that even if a vulnerable service (like a test database) starts up on port 8080, it is unreachable from the internet because the firewall strictly blocks it.
 2. **`echo "y" | sudo ufw enable`**: In automation (CI/CD pipelines), interactive prompts break the build. Piping `y` into the command allows this script to run unattended in a setup pipeline.
 
-### // Verification
+### Verification
 
 Run the script and check the verbose output:
 

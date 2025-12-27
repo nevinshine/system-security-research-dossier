@@ -5,10 +5,10 @@ sidebar:
   order: 2
 ---
 
-### // Objective
+### Objective
 To establish a baseline for **Identity and Access Management (IAM)** by programmatically identifying all human-accessible accounts and verifying that only the `root` user possesses UID 0 privileges.
 
-### // The Audit Script (`user_audit.sh`)
+### The Audit Script (`user_audit.sh`)
 
 This script generates a `security_audit.txt` report listing all users with interactive shells and root-level access.
 
@@ -38,7 +38,7 @@ echo "[*] AUDIT COMPLETE. SAVED TO $OUTPUT"
 
 ```
 
-### // Technical Breakdown
+### Technical Breakdown
 
 1. **Shell Detection (`grep -E "bash|sh"`)**:
 * Attackers often create hidden users. However, service accounts (like `www-data` or `nobody`) usually have `/usr/sbin/nologin` or `/bin/false` as their shell.
@@ -51,7 +51,7 @@ echo "[*] AUDIT COMPLETE. SAVED TO $OUTPUT"
 
 
 
-### // Execution
+### Execution
 
 ```bash
 chmod +x user_audit.sh
@@ -60,8 +60,6 @@ cat security_audit.txt
 
 ```
 
-### // Findings
+### Findings
 
 On a standard Ubuntu install, only `root` should appear in the UID 0 section. If any other user appears there, the system is compromised.
-
-```

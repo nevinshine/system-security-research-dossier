@@ -5,15 +5,15 @@ sidebar:
   order: 7
 ---
 
-### // Mission
+### Mission
 **Operation Bolted Door:** Secure the Linux server by eliminating "knowledge-based" authentication (passwords) and enforcing "possession-based" authentication (Cryptographic Keys).
 
-### // The Vulnerability Landscape
+### The Vulnerability Landscape
 By default, SSH (Port 22) allows password logins. This exposes the infrastructure to:
 1.  **Brute Force Campaigns:** Botnets testing billions of common passwords per second.
 2.  **Root Compromise:** If the `root` account has a weak password, a single breach grants total system control.
 
-### // Execution Log
+### Execution Log
 
 #### 1. Cryptography Upgrade (Client-Side)
 We generated an **Ed25519** key pair.
@@ -51,10 +51,9 @@ Modified the SSH daemon configuration to ban unsafe practices.
 * **Test:** Initiated `ssh nevin@192.168.234.128` from a fresh terminal.
 * **Result:** Authenticated instantly without a password prompt.
 
-### // Security Philosophy
+### Security Philosophy
 
 > "Security is not about making things impossible to break, but making them too expensive to break."
 
 By removing passwords, we force attackers to steal a physical private key file rather than just guessing a string of characters.
 
-```
