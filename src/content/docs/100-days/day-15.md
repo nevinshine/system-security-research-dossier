@@ -1,5 +1,5 @@
 ---
-title: "Day 15 — Research Logging & Experimental Discipline"
+title: "Day 15: Research Logging & Experimental Discipline"
 date: 2025-01-01
 tags: ["security-research", "devsecops", "anomaly-detection", "sentinel"]
 ---
