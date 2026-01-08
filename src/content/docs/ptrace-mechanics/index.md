@@ -16,7 +16,7 @@ description: Deep dive into the Linux ptrace API and Register Interception
 
 ---
 
-## 🗺️ The AMD64 Syscall ABI
+## The AMD64 Syscall ABI
 
 On Linux x86_64, arguments are passed via specific registers. Understanding this map is critical for interception.
 
