@@ -1,23 +1,49 @@
 ---
 title: Runtime Security Dossier
-description: ">> ESTABLISHING SECURE CONNECTION... [CONNECTED]"
+description: Research Notebook of Nevin Shine
 template: splash
 hero:
-  tagline: Encrypted Archive // Authorized Personnel Only
+  tagline: Systems Security Research • Linux Kernel • Runtime Verification
   image:
-    html: |
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--sl-color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 250px; height: 250px; opacity: 0.9; filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.4));">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <path d="M12 8v4"/>
-        <path d="M12 16h.01"/>
-      </svg>
+    file: ../../assets/houston.webp
   actions:
-    - text: Access Logbook
-      link: 100-days/
+    - text: View Sentinel Architecture
+      link: /sentinel-architecture/
       icon: right-arrow
       variant: primary
-    - text: View Sentinel
-      link: sentinel/
+    - text: Ptrace Mechanics
+      link: /ptrace-mechanics/
       icon: external
-      variant: secondary
 ---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Research Domains
+
+<CardGrid stagger>
+	<Card title="Sentinel Architecture" icon="rocket">
+		Design specifications for **Sentinel Runtime**.
+		<br/>
+		- [Active Policy Enforcement](/sentinel-architecture/architecture)
+		- [Memory Introspection](/sentinel-architecture/experiments)
+	</Card>
+	<Card title="Ptrace Mechanics" icon="magnifier">
+		Low-level documentation on the Linux `ptrace` API.
+		<br/>
+		- Register Mapping (AMD64 ABI)
+		- `PTRACE_PEEKDATA` Teleportation
+	</Card>
+	<Card title="Kernel Internals" icon="puzzle">
+		Notes on `task_struct`, Virtual Memory, and the User-Kernel boundary.
+	</Card>
+	<Card title="Threat Models" icon="warning">
+		Analysis of Runtime Code Injection and Syscall Evasion techniques.
+	</Card>
+</CardGrid>
+
+---
+
+### Abstract
+This dossier serves as the central laboratory notebook for **Nevin Shine**. It prioritizes depth and architectural decision records (ADRs) over chronological logging.
+
+*“Verba volant, scripta manent.”*
