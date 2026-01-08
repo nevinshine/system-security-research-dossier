@@ -1,49 +1,67 @@
-# Starlight Starter Kit: Basics
+# Runtime Security Dossier
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+![Version](https://img.shields.io/badge/version-v1.0-green)
+![Status](https://img.shields.io/badge/status-active_research-blue)
+![Stack](https://img.shields.io/badge/built_with-Astro_Starlight-orange)
+
+**The central laboratory notebook for the Sentinel Runtime Verification System.**
+
+This repository hosts the static research site that documents the architecture, threat models, and kernel mechanics behind Sentinel. It prioritizes depth, architectural decision records (ADRs), and raw technical notes over chronological logging.
+
+🔗 **Live Dossier:** [nevinshine.github.io/runtime-security-dossier](https://nevinshine.github.io/runtime-security-dossier/)
+
+---
+
+## 📂 Research Domains
+
+The documentation is structured into four core pillars:
+
+| Domain | Description |
+| :--- | :--- |
+| **Sentinel Architecture** | Design specs for the Interception Pipeline (C), Policy Engine, and Anomaly Detection (Python). |
+| **Ptrace Mechanics** | Low-level notes on the Linux `ptrace` API, register mapping (AMD64 ABI), and memory injection. |
+| **Kernel Internals** | Documentation on `task_struct`, virtual memory management, and the User/Kernel boundary. |
+| **Threat Models** | Analysis of runtime evasion techniques, code injection, and behavioral malware signatures. |
+
+---
+
+## 🛠️ Local Development
+
+This project is built with **Astro Starlight**.
+
+### Prerequisites
+* Node.js v18+ (Recommended: v20 LTS)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone [https://github.com/nevinshine/runtime-security-dossier.git](https://github.com/nevinshine/runtime-security-dossier.git)
+
+# Install dependencies
+npm install
+npm install sharp
 
 ```
-npm create astro@latest -- --template starlight
+
+### Running the Lab
+
+Start the local development server:
+
+```bash
+npm run dev
+
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The site will be available at `http://localhost:4321/runtime-security-dossier/`.
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## 🔗 Related Projects
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+* **[Sentinel Runtime](https://www.google.com/search?q=https://github.com/nevinshine/sentinel-runtime)** – The active source code (C/Python) described in this dossier.
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+---
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+*“Verba volant, scripta manent.”*
+*(Spoken words fly away, written words remain.)*
