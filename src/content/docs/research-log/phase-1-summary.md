@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-## 📅 Research Period: Days 1–15
+## Research Period: Days 1–15
 
 **Status:** ✅ Completed
 **Focus:** Linux Kernel Hardening, Anomaly Detection Theory, and Prototype v0.7.
@@ -14,7 +14,7 @@ This phase focused on establishing the "Ground Truth" for the Sentinel environme
 
 ---
 
-## 🏆 Key Achievements
+## Key Achievements
 
 ### 1. The Interceptor Prototype (v0.7)
 We successfully engineered a raw C interceptor using `ptrace` that demonstrates **Active Defense**:
@@ -36,5 +36,5 @@ To ensure the researcher (us) is safe while handling malware, the lab was harden
 
 ---
 
-## 🔗 Raw Logs
+## Raw Logs
 For the daily experimental logs and source code, refer to the [Systems Security Foundations Repository](https://github.com/nevinshine/systems-security-foundations).
