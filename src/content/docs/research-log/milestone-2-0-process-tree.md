@@ -3,8 +3,8 @@ title: "M2.0: Recursive Process Tracking"
 description: Overcoming the ptrace blind spot with PTRACE_O_TRACEFORK.
 ---
 
-**Date:** 2026-01-15
-**Status:** Experimental (M2.0)
+**Date:** 2026-01-16
+**Status:** ✅ Operational (M2.0)
 
 ## The Research Problem
 Standard `ptrace` attachment (`PTRACE_TRACEME`) is shallow. It only traces the immediate process.
@@ -12,33 +12,44 @@ Standard `ptrace` attachment (`PTRACE_TRACEME`) is shallow. It only traces the i
 * **Impact:** This "Grandchild Blind Spot" allows malware to bypass detection simply by forking.
 
 ## The Engineering Solution
-We implemented **Recursive Fork Tracking** using `PTRACE_O_TRACEFORK`.
+We implemented **Recursive Fork Tracking** using `PTRACE_O_TRACEFORK`. This instructs the Kernel to automatically attach the Sentinel engine to any new process spawned by the tracee *before* it can execute instructions.
+
+### Visual Verification
+*Trace Log capturing a multi-stage evasion attempt (Parent $\to$ Dropper $\to$ Payload).*
+
+![Sentinel M2.0 Recursive Tracking Demo](/runtime-security-dossier/assets/sentinel_demo.gif)
 
 ### 1. Kernel Option Setting
-We instructed the kernel to auto-attach Sentinel to any new process spawned by the tracee:
+We instructed the kernel to auto-attach Sentinel to any new process spawned by the tracee, including clones and forks:
+
 ```c
-// Force auto-attachment to all future child processes
-ptrace(PTRACE_SETOPTIONS, pid, 0, PTRACE_O_TRACEFORK);
+// Force auto-attachment to all future child/grandchild processes
+ptrace(PTRACE_SETOPTIONS, original_child, 0, 
+       PTRACE_O_TRACEFORK | PTRACE_O_TRACECLONE | PTRACE_O_TRACEEXEC | PTRACE_O_EXITKILL);
 
 ```
 
 ### 2. Asynchronous Event Loop
 
-Refactored the main wait loop to handle signals from multiple PIDs simultaneously:
+Refactored the main wait loop to handle signals from multiple PIDs simultaneously using the `__WALL` flag (Wait All):
 
 ```c
 // waitpid(-1) catches signals from ANY child or grandchild
-pid_t trigger_pid = waitpid(-1, &status, 0);
+pid_t current_pid = waitpid(-1, &status, __WALL);
 
-if (status >> 8 == (SIGTRAP | (PTRACE_EVENT_FORK << 8))) {
-    // Handle new process creation dynamically
-    handle_fork_event(trigger_pid);
+// Check if the stop was caused by a new process spawning
+if ((status >> 16) == PTRACE_EVENT_FORK || (status >> 16) == PTRACE_EVENT_CLONE) {
+    unsigned long new_pid_l;
+    ptrace(PTRACE_GETEVENTMSG, current_pid, 0, &new_pid_l);
+    
+    // Register the new child in the process tree map
+    log_tree_event((pid_t)new_pid_l, current_pid, depth + 1, "SPAWNED", "Fork Detected");
 }
 
 ```
 
 ## Verification
 
-* **Scenario:** `bash` (Parent)  executes  `python3` (Child)  executes  `rename()` syscall.
-* **Result:** Sentinel successfully intercepted the syscall from the *Child* process and blocked it based on the policy.
-
+* **Scenario:** `bash` (Parent)  executes `recursive_fork` (Child)  spawns `Payload` (Grandchild).
+* **Result:** Sentinel successfully intercepted the `mkdir` syscall from the *Grandchild* process (PID 67841) and blocked it based on the policy.
+* **Outcome:** The "Grandchild Blind Spot" is eliminated.

@@ -70,19 +70,20 @@ The system is tested using a synchronous **Recursive Listen-Think-Act** loop:
 **Objective:** Verify that Sentinel can track and block "Grandchild" processes (Process Tree Visibility).
 
 ### Setup
-* **Challenge:** A shell script (`bash`) launches a Python script (`python3`) which attempts a Ransomware-style `rename`.
-* **Vulnerability:** Standard tracers only see the parent (`bash`), missing the actual attack in the child.
+* **Test Vector:** `tests/evasion/recursive_fork.c` (Simulates a multi-stage Dropper).
+* **Hierarchy:** Root $\to$ Child (Dropper) $\to$ Grandchild (Payload).
+* **Vulnerability:** Standard tracers only see the Root, missing the payload in the Grandchild.
 * **Method:** `PTRACE_O_TRACEFORK` auto-attachment.
 
-### Results
+### Results (From Live Trace)
 
-| Process Chain | Syscall | Argument | Verdict |
+| Process Chain | PID | Event | Verdict |
 | :--- | :--- | :--- | :--- |
-| `bash` (PID 1001) | `fork()` | `python3` | **Attached** |
-| `python3` (PID 1002) | `read()` | `money.csv` | `ALLOW` |
-| `python3` (PID 1002) | `rename()` | `money.csv.enc` | `🚨 BLOCK` |
+| **Root** | 67839 | `wait()` | **Attached** |
+| **Dropper** (Child) | 67840 | `fork()` | **Attached (Recursive)** |
+| **Payload** (Grandchild) | 67841 | `mkdir("RANSOMWARE_ROOT")` | `🚨 BLOCK` |
 
-**Conclusion:** Validated Zero-Blind-Spot monitoring. Sentinel successfully tracked execution across the process boundary and enforced policy on the child process.
+**Conclusion:** Validated Zero-Blind-Spot monitoring. Sentinel successfully tracked execution across 3 generations and enforced policy on the Grandchild process.
 
 ---
 

@@ -16,6 +16,15 @@ While Phase 1 focused on the **Foundations** (Trace, Block, Train), Phase 2 is a
 
 ## Progress Log
 
+### Day 24: Research Architecture Standardization
+**Goal:** Elevate codebase from "Student Prototype" to "Research Artifact".
+
+We performed a "Surgical Refactor" of the entire repository to meet academic engineering standards.
+* **Modularization:** Decoupled the Monolithic Kernel Logic (`src/engine`) from the Policy Analysis Brain (`src/analysis`).
+* **Automation:** Replaced manual GCC scripts with a standard `Makefile` build system for reproducible compilation.
+* **Verification:** Established a standardized `tests/evasion` suite for benchmarking malware vectors.
+* **Outcome:** The system is now architecturally stable for Universal Argument Extraction (Phase 6).
+
 ### Day 23: Recursive Process Tracking (M2.0)
 **Goal:** Eliminate the "Grandchild Blind Spot" using `PTRACE_O_TRACEFORK`.
 
@@ -28,7 +37,7 @@ We upgraded the Sentinel Kernel Engine to automatically track process lineages.
 ### Day 22: Semantic Orchestration (M1.2)
 **Goal:** Unify the "Brain" and "Body" into a single executable platform.
 
-We integrated the C-Engine and Python-Brain into a cohesive platform using the `sentinel.sh` orchestrator.
+We integrated the C-Engine and Python-Brain into a cohesive platform.
 * **Refinement:** Patched the `mkdirat` blind spot by leveraging the semantic engine to inspect directory paths relative to file descriptors.
 * **The "Eye" Upgrade:** Finalized the `PTRACE_PEEKDATA` logic to reliably extract string arguments from child processes without race conditions.
 * **Milestone:** Tagged release `M1.2` (Active Semantic Platform).
@@ -50,17 +59,10 @@ We successfully integrated the **WiSARD (Weightless Neural Network)** into the I
     * Input: `rootkit_install` (Anomaly) $\to$ Verdict: `🚨 ANOMALY`
 * **Result:** Achieved **< 1ms latency** for the full detection loop.
 
-### Day 19: The Neural Bridge (IPC)
-**Goal:** Establish high-speed communication between C and Python.
-
-We implemented a **Named Pipe (FIFO)** architecture at `/tmp/sentinel_ipc`.
-* **The Transmitter (C):** Streams syscall telemetry in real-time.
-* **The Receiver (Python):** Listens for events to feed the Neural Network.
-
 ---
 
 ## Upcoming Objectives (Phase 3)
 
-* **Ransomware Pattern Detection:** Moving beyond single-event blocking to detect *sequences* of behavior (e.g., "Open $\to$ Read $\to$ Encrypt $\to$ Write").
-* **MSc Thesis Proposal:** Consolidating these findings into a formal research proposal for CISPA.
+* **Universal Argument Extraction (Phase 6):** Decoupling the engine from hardcoded syscalls to support a universal `syscall_map` (detecting `connect`, `unlink`, `execve`).
+* **Behavioral Sequence Analysis:** Moving beyond single-event blocking to detect *sequences* of behavior (e.g., "Open $\to$ Read $\to$ Encrypt $\to$ Write").
 * **Container Hardening:** Testing Sentinel against Docker container escapes.

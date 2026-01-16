@@ -11,13 +11,13 @@ It intercepts the communication between a process tree and the Linux Kernel to e
 
 ### The Control Loop (Three-Layer Design)
 
-Sentinel operates as a feedback control loop between the Kernel, the Semantic Analysis Engine, and the Enforcement Module.
+Sentinel operates as a synchronous feedback control loop between the Kernel, the Semantic Analysis Engine, and the Enforcement Module.
 
 | Layer | Component | Language | Function |
 | :--- | :--- | :--- | :--- |
-| **0** | **Target Tree** | Binary | The untrusted process tree (e.g., shell -> python -> malware). |
+| **0** | **Target Tree** | Binary | The untrusted process tree (e.g., shell $\to$ python $\to$ malware). |
 | **1** | **Interceptor** | C | **The Body.** A recursive `ptrace` engine that auto-attaches to child processes (`PTRACE_O_TRACEFORK`) and extracts state. |
-| **1.5** | **Bridge** | IPC | **The Nervous System.** A synchronous FIFO pipe (`/tmp/sentinel_ipc`) for high-speed telemetry. |
+| **1.5** | **Bridge** | IPC | **The Nervous System.** Dual FIFO pipes (`/tmp/sentinel_req`, `/tmp/sentinel_resp`) for deadlock-free, bidirectional telemetry. |
 | **2** | **Brain** | Python | **The Mind.** A Weightless Neural Network (WiSARD) + Policy Engine that outputs `BENIGN` or `BLOCK`. |
 | **3** | **Enforcer** | C | **The Shield.** Receives the verdict and injects `ENOSYS` into the CPU registers to neutralize malicious syscalls. |
 
@@ -35,7 +35,7 @@ As of **Milestone 2.0**, Sentinel implements a fully synchronous **Recursive Lis
 5.  **Introspect:** Sentinel uses `PTRACE_PEEKDATA` to read the file paths from the child's memory.
 6.  **Inference:** The **Brain (Python)** analyzes the intent (Rename + Sensitive File).
 7.  **Verdict:** The Brain outputs `🚨 BLOCK`.
-8.  **Neutralization:** The Interceptor rewrites the child's register to `void`, preventing the ransomware encryption.
+8.  **Neutralization:** The Interceptor rewrites the child's register to `void` (syscall -1), preventing the ransomware encryption.
 
 ---
 
@@ -51,14 +51,14 @@ When a malicious syscall is detected, Sentinel performs a surgical **Register Re
 3.  **Resume:** The kernel sees syscall `-1` (invalid), returns `ENOSYS` (Function not implemented), and the process continues without executing the malicious action.
 
 ```c
-// Code Snippet: The Neutralization Logic
+// Code Snippet: The Neutralization Logic (M1.1)
 if (verdict == BLOCK) {
     // 1. Invalidate the Syscall Number
     regs.orig_rax = -1;
     ptrace(PTRACE_SETREGS, child_pid, NULL, &regs);
 
     // 2. Resume execution (Kernel performs "No-Op")
-    printf("[🛡️ SENTINEL] Threat Neutralized via ENOSYS.\n");
+    // The target process receives return code -1 (ENOSYS)
 }
 
 ```
@@ -79,5 +79,3 @@ To understand *intent*, we must look beyond syscall numbers. Sentinel uses `PTRA
 * [x] **Active Blocking:** Real-time syscall neutralization via `ENOSYS`.
 * [x] **Live Inference:** Sub-millisecond AI verdicts.
 * [x] **Process Tree Tracking (M2.0):** Recursive monitoring of complex execution chains.
-
-

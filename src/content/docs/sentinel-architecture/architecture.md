@@ -92,7 +92,7 @@ long word = ptrace(PTRACE_PEEKDATA, child_pid, addr + offset, NULL);
 
 ### 4. Telemetry Output (IPC Bridge)
 
-Instead of writing to a CSV log (which is too slow), Sentinel streams telemetry to a **FIFO Pipe** (`/tmp/sentinel_ipc`) for real-time consumption by the Python Brain.
+Sentinel streams telemetry to a Request Pipe `/tmp/sentinel_req` and waits for a verdict on the Response Pipe `/tmp/sentinel_resp` to prevent deadlocks.
 
 **Format:** `SYSCALL:<name>:<args>`
 
