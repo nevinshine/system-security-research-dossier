@@ -4,10 +4,10 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://nevinshine.github.io',
-	base: '/runtime-security-dossier',
+	base: '/system-security-research-dossier',
 	integrations: [
 		starlight({
-			title: 'Runtime Security Dossier',
+			title: 'System Security Research Dossier',
 			social: [
 				{
 					label: 'GitHub',
