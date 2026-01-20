@@ -7,7 +7,7 @@ sidebar:
 ---
 
 **Date:** 2026-01-16  
-**Status:** ✅ Operational (M2.0)  
+**Status:** Operational (M2.0)  
 **Focus:** Recursive Tracking / Anti-Evasion
 
 ## The Research Problem

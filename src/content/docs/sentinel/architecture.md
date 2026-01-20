@@ -40,3 +40,4 @@ The Python Engine (`brain.py`) contains the security logic. Decoupling the logic
 
 * **Context Awareness:** Tracks the state of operations (e.g., file access patterns).
 * **Heuristics:** Evaluates arguments against "Protected Zones" or known attack vectors (e.g., Ransomware extensions).
+

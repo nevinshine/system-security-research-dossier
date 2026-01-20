@@ -1,43 +1,55 @@
 ---
-title: Sentinel Runtime
-description: A Linux Kernel Runtime Security System.
+title: Systems Security Research Dossier
+description: Research Portfolio of Nevin | Host & Datapath Security
 template: splash
 hero:
-  title: Sentinel Runtime
-  tagline: A Closed-Loop Runtime Control System for Linux.
-  badge:
-    text: M2.1 Universal Defense
-    variant: tip
+  tagline: "Unifying Runtime Process Control & Kernel Datapath Enforcement"
   actions:
-    - text: System Architecture
-      link: /runtime-security-dossier/sentinel-architecture/
+    - text: Enter Track 1 (Sentinel)
+      link: /system-security-research-dossier/sentinel/mission/
       icon: right-arrow
       variant: primary
-    - text: View on GitHub
-      link: https://github.com/nevinshine/sentinel-runtime
+    - text: Enter Track 2 (Hyperion)
+      link: /system-security-research-dossier/hyperion/mission/
       icon: external
       variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-<div style="margin-top: 2rem;"></div>
----
+## The Research Question
 
-<img src="/runtime-security-dossier/assets/sentinel_demo.gif" alt="Sentinel Live Demo" style="width: 100%; border-radius: 8px; border: 1px solid #30363d; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(0,0,0,0.5);" />
+Modern defense often treats the **Host** (OS/Process) and the **Network** (Packet/Wire) as separate silos. This research portfolio explores the **composition** of these two domains to create a unified defense architecture.
 
----
 <CardGrid>
-    <Card title="Recursive Tracking" icon="magnifier">
-        Tracks <code>fork</code>, <code>vfork</code>, and <code>clone</code> trees. No blind spots.
-    </Card>
-    <Card title="Universal Map" icon="linux">
-        Normalizes <code>unlink</code> vs <code>unlinkat</code> into semantic events.
-    </Card>
-    <Card title="Active Defense" icon="warning">
-        <b>Block-on-Intent.</b> Injects <code>EPERM</code> to stop threats in real-time.
-    </Card>
-    <Card title="Neural Engine" icon="seti:python">
-        Decoupled Python policy engine for behavioral analysis.
-    </Card>
+  <Card title="Track 1: Sentinel Runtime" icon="linux">
+    **Domain:** Host / Process / Syscall
+    <br/>
+    **Mechanism:** `ptrace` + Anomaly Detection
+    <br/>
+    **Focus:** Enforcing intent at the execution boundary. Sentinel prevents unauthorized syscall patterns and behavioral anomalies.
+    <br/>
+    [**Explore Sentinel Research →**](/sentinel/mission/)
+  </Card>
+  
+  <Card title="Track 2: Hyperion (Network)" icon="rocket">
+    **Domain:** Network / Driver / Packet
+    <br/>
+    **Mechanism:** `eBPF` + `XDP`
+    <br/>
+    **Focus:** Enforcing policy at the wire. Hyperion rejects malicious traffic in the NIC driver before the OS allocates memory.
+    <br/>
+    [**Explore Hyperion Research →**](/hyperion/mission/)
+  </Card>
 </CardGrid>
+
+---
+
+## Technical Stack
+
+| Dimension | Sentinel (Host) | Hyperion (Network) |
+| :--- | :--- | :--- |
+| **Language** | Python / C | C (eBPF) / Go |
+| **Hook Point** | `ptrace` (Syscall) | `XDP` (Ingress) |
+| **Latency** | Millisecond | Nanosecond |
+| **State** | **Active (Phase 6)** | **Active (Phase M1)** |

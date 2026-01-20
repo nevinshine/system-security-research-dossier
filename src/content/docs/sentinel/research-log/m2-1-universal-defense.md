@@ -6,7 +6,7 @@ sidebar:
   order: 3
 ---
 **Date:** 2026-01-18  
-**Status:** ✅ Operational (M2.1)  
+**Status:** Operational (M2.1)  
 **Focus:** Kernel Interception / Anti-Evasion
 
 ## The "Stealth Shell" Problem

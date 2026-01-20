@@ -7,7 +7,7 @@ sidebar:
 ---
 
 **Date:** 2026-01-14  
-**Status:** ✅ Operational (M1.0)  
+**Status:** Operational (M1.0)  
 **Focus:** IPC / System Integration
 
 ## The Architecture Problem
