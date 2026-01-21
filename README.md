@@ -16,10 +16,10 @@ This repository hosts the static research site that documents the architecture, 
 
 The dossier is divided into two distinct defense domains:
 
-| Track | Name | Domain | Mechanism | Status |
+| Track | Name | Domain | Mechanism |
 | :--- | :--- | :--- | :--- | :--- |
-| **01** | **Sentinel** | Host / User Space | `ptrace` (Syscall) | **M2.1 (Active Defense)** |
-| **02** | **Hyperion** | Network / Driver | `XDP` + `eBPF` | **M1 (Ingress Filter)** |
+| **01** | **Sentinel** | Host / User Space | `ptrace` (Syscall) |
+| **02** | **Hyperion** | Network / Driver | `XDP` + `eBPF` |
 
 ### Track 1: Sentinel Runtime
 * **Focus:** Process-level anomaly detection and semantic enforcement.
