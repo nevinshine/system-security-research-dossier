@@ -17,7 +17,7 @@ This repository hosts the static research site that documents the architecture, 
 The dossier is divided into two distinct defense domains:
 
 | Track | Name | Domain | Mechanism |
-| :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | **01** | **Sentinel** | Host / User Space | `ptrace` (Syscall) |
 | **02** | **Hyperion** | Network / Driver | `XDP` + `eBPF` |
 
