@@ -49,6 +49,7 @@ export default defineConfig({
                     items: [
                         { label: 'Mission Brief', link: '/hyperion/mission' },
                         { label: 'M1: Ingress Filter', link: '/hyperion/m1-report' },
+                        { label: 'M2: Stateful Tracking', link: '/hyperion/m2-report' },
                     ],
                 },
             ],
