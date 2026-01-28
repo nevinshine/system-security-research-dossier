@@ -76,5 +76,5 @@ rm: cannot remove 'protected.txt': Operation not permitted
 
 **Live Demo (The Sentinel):**
 
-![Sentinel Demo](../../../../public/assets/sentinel_demo.gif)
+![Sentinel Demo](../../../../public/assets/sentinel_evasion.gif)
 

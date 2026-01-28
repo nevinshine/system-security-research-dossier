@@ -4,8 +4,8 @@ description: Implementing Flow State via eBPF Maps
 ---
 
 ## 1. Objective: The Memory Upgrade
-**Status:** $\text{\color{green}M2 COMPLETE}$
-**Focus:** $\text{\color{orange}eBPF Maps (LRU Hash)}$
+* **Status:** M2 COMPLETE
+* **Focus:** eBPF Maps (LRU Hash)
 
 In M1, Hyperion was "amnesiac"—it treated every packet in isolation. M2 introduces **Kernel State**, allowing the firewall to "remember" traffic volume per IP address.
 
