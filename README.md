@@ -24,13 +24,11 @@ The dossier is divided into two distinct defense domains:
 ### Track 1: Sentinel Runtime
 * **Focus:** Process-level anomaly detection and semantic enforcement.
 * **Key Tech:** Recursive `ptrace` interception, Thermometer Encoding, Digital Weightless Networks (WiSARD).
-* **Current State:** **M2.1 Universal Active Defense**. Capable of tracking `vfork` shells and blocking file deletion (`unlink`) in real-time.
 
 ### Track 2: Hyperion Network
 * **Focus:** Pre-allocation packet filtering at the network driver level.
 * **Key Tech:** eBPF (Extended Berkeley Packet Filter), XDP (Express Data Path).
-* **Current State:** **M1 Ingress Filter**. Successfully drops malicious packets by IP before `sk_buff` allocation.
-
+* 
 ---
 
 ## Local Development
