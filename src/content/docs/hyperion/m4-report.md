@@ -4,8 +4,8 @@ description: Production-Grade Telemetry and Policy Injection
 ---
 
 ## 1. Objective: The "Zero-Downtime" Architecture
-**Status:** M4.6 STABLE
-**Focus:** Dynamic Maps & Ring Buffer
+* **Status:** M4.6 STABLE
+* **Focus:** Dynamic Maps & Ring Buffer
 
 M3 proved DPI was possible; M4 makes it operational. We moved from a static C-hardcoded scanner to a **Split-Plane Architecture** where policy is injected from User Space at runtime.
 
