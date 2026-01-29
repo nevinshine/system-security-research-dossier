@@ -4,8 +4,8 @@ description: Layer 7 Payload Analysis in the Kernel
 ---
 
 ## 1. Objective: The Semantic Gap
-**Status:** $\text{\color{green}M3 COMPLETE}$
-**Focus:** $\text{\color{orange}Payload Scanning (Static)}$
+* **Status:** M3 COMPLETE
+* **Focus:** Payload Scanning (Static)
 
 Milestones M1 and M2 operated on **metadata** (IP headers). M3 addresses the critical "Semantic Gap"—the ability to inspect the **content** of a packet (Layer 7) at the driver level.
 
