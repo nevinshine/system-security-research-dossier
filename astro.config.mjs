@@ -70,7 +70,9 @@ export default defineConfig({
                         { label: 'M1: Ingress Filter', link: '/hyperion/m1-report' },
                         { label: 'M2: Stateful Tracking', link: '/hyperion/m2-report' },
                         { label: 'M3: Deep Packet Inspection', link: '/hyperion/m3-report' },
-                        { label: 'M4: Deep Packet Inspection', link: '/hyperion/m4-report' },
+                        { label: 'M4: Production-Grade Telemetry and Policy Injection', link: '/hyperion/m4-report' },
+                        { label: 'M5: Flow Context & Stateful Tracking', link: '/hyperion/m5-report' },
+                        
                     ],
                 },
             ],
