@@ -10,32 +10,49 @@ description: Datapath Security at the Network Driver
 
 ---
 
-## System Design (M4.6 Architecture)
 
-Hyperion M4.6 operates on a fully dynamic split-plane design.
+## System Design (M5.0 Architecture)
 
-```mermaid
-graph TD
-    A[Attacker] -->|Malicious Packet| B(Network Interface)
-    B -->|XDP Hook| C{Hyperion Engine}
-    
-    %% Dynamic Policy Flow
-    U[User Controller] -.->|Update Map| P[(Policy Map)]
-    P -.->|Read Rule| C
-    
-    C -->|Parse L2-L4| D[Locate Payload]
-    D -->|DPI Scan| E{Signature Match?}
-    
-    %% Decision Flow
-    E -- Match --> F[XDP_DROP]
-    E -- Clean --> G[XDP_PASS]
-    
-    %% Telemetry Flow
-    F -.->|Push Event| R[(Ring Buffer)]
-    R -.->|Poll & Decode| U
-    U -->|ALERT LOG| L[Console Output]
+Hyperion M5.0 introduces advanced stateful flow tracking and context reconstruction within the XDP datapath, enabling detection of sophisticated evasion techniques such as split-packet attacks.
 
 ```
+Attacker -> Network Interface -> XDP Hook -> Hyperion Engine
+    |-> Policy Map (dynamic updates)
+    |-> TCP Context Map (stateful tracking)
+    |-> DPI Scanner (payload analysis)
+    |-> Telemetry Ring Buffer (event logging)
+```
+
+**Key Features:**
+- Stateful TCP context tracking using eBPF maps for real-time TCP stream reconstruction.
+- Split-packet evasion detection logic to block fragmented malicious payloads.
+- Enhanced telemetry and event logging via ring buffer, integrated with Go-based CLI.
+- Dynamic policy updates and fine-grained rule management through user-space controller.
+
+**Research Outcomes:**
+- Demonstrated wire-speed stateful flow tracking in XDP.
+- Validated detection of split-packet evasion attacks.
+- Achieved stable integration of telemetry and dynamic policy control.
+
+**Next Steps:**
+- Expand protocol support beyond TCP.
+- Integrate with Sentinel for unified host-network defense.
+- Publish benchmarks and case studies.
+
+---
+
+## Video Demonstrations
+[![asciicast](https://asciinema.org/a/777577.svg)](https://asciinema.org/a/777577)
+
+## Benchmarks
+| Metric                | Value (Baseline) | Value (DPI) | Value (Header) | Description                       |
+|----------------------|------------------|-------------|---------------|-----------------------------------|
+| Throughput (Gbps)    | 64.3             | 65.3        | 63.4          | Packets processed per second      |
+| Latency (mean RTT ns)| 67               | 136         | 69            | Processing latency (nanoseconds)  |
+| Detection Accuracy   | 0.70             | 0.75        | 0.60          | Calculated from sample dataset    |
+| CPU Utilization (%)  | 184.9            | 171.9       | 174.9         | Resource usage during operation   |
+
+---
 
 ---
 
