@@ -5,14 +5,16 @@ description: Host-Based Runtime Security (Active Defense)
 
 ### Project Metadata
 * **Status:** Research Artifact (Active)
-* **Current Capability:** M2.1 (Universal Syscall Extraction & VFORK Tracking)
+* **Current Capability:** M3.4 (Persistence + Canonicalization)
 * **Target:** CISPA / Saarland MSc Application
 
 ---
 
 ### Abstract
 
-**Sentinel Runtime** is a Linux runtime defense system designed to investigate syscall-level observability and semantic enforcement. Unlike traditional signature-based AVs, Sentinel leverages **ptrace** to establish a closed-loop runtime control system. It connects a high-speed C interception kernel to a Python-based analysis engine (**WiSARD**) to evaluate process intent against security policies in real-time.
+**Sentinel Runtime** is a Linux host-based defense system focused on syscall-level monitoring and cross-process taint tracking. By establishing a closed-loop control system via `ptrace`, Sentinel connects a high-speed C interception engine to a Python-based **Cognitive Engine** to enforce security policies in real-time.
+
+> **[Read the MITRE Mapping](https://www.google.com/search?q=docs/MITRE_MAPPING.md)** - A technical deep-dive into how Sentinel aligns with the ATT&CK framework.
 
 ### M2.1: Universal Active Defense (Live Demo)
 
@@ -51,7 +53,7 @@ Sentinel operates as a modular closed-loop runtime control system:
 
 ---
 
-## Execution Control Loop (M2.1)
+## [ 0x04 ] EXECUTION CONTROL LOOP (M3.4)
 
 **Terminal 1 (The Brain):**
 
@@ -60,7 +62,6 @@ $ python3 src/analysis/brain.py
 + [INFO] Neural Engine Online.
 + [LOG] Action: execve | Path: /bin/sh
 - [ALERT] BLOCKED THREAT: unlink -> protected.txt
-
 ```
 
 **Terminal 2 (The Sentinel):**
@@ -71,7 +72,6 @@ sudo ./bin/sentinel test /bin/sh
 # Inside monitored session:
 # rm protected.txt
 rm: cannot remove 'protected.txt': Operation not permitted
-
 ```
 
 **Live Demo (The Sentinel):**
