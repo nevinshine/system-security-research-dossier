@@ -8,4 +8,36 @@
   --sl-color-accent-high: #bbf7d0;
 }
 
-/* That is it. No other overrides. */
+/* Research Console Floating Action Button */
+.admin-action-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  /* Green Gradient */
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4), 0 4px 6px -2px rgba(34, 197, 94, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.admin-action-btn:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.5), 0 10px 10px -5px rgba(34, 197, 94, 0.2);
+  background: linear-gradient(135deg, #16a34a, #14532d);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.admin-action-btn svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
