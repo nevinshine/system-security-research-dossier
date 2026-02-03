@@ -91,6 +91,17 @@ export default defineConfig({
 
                     ],
                 },
+                {
+                    label: 'Track 3: Telos (AI Security)',
+                    items: [
+                        { label: 'Mission Brief', link: '/telos/mission' },
+                    ],
+                },
+                {
+                    label: 'Field Notes',
+                    collapsed: true,
+                    autogenerate: { directory: 'notes' }
+                },
             ],
         }),
     ],

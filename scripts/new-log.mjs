@@ -13,7 +13,8 @@ const rl = readline.createInterface({
 const TRACKS = {
     '1': { name: 'Sentinel (Host)', path: 'src/content/docs/sentinel/logs' },
     '2': { name: 'Hyperion (Network)', path: 'src/content/docs/hyperion/logs' },
-    '3': { name: 'Telos (Agentic)', path: 'src/content/docs/telos/logs' }
+    '3': { name: 'Telos (Agentic)', path: 'src/content/docs/telos/logs' },
+    '9': { name: 'Field Notes (Side Research)', path: 'src/content/docs/notes' }
 };
 
 // 3. The Questions
@@ -22,8 +23,9 @@ console.log('-----------------------------------');
 console.log('1: Sentinel');
 console.log('2: Hyperion');
 console.log('3: Telos');
+console.log('9: Field Notes (Side Research)');
 
-rl.question('\n\x1b[33mWhere does this log belong? (1-3):\x1b[0m ', (trackChoice) => {
+rl.question('\n\x1b[33mWhere does this log belong? (1-3, 9):\x1b[0m ', (trackChoice) => {
     const track = TRACKS[trackChoice.trim()];
 
     if (!track) {

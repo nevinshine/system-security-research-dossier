@@ -4,55 +4,99 @@ description: Research Portfolio of Nevin | Host & Datapath Security
 template: splash
 hero:
   tagline: "Unifying Runtime Process Control & Kernel Datapath Enforcement"
-  actions:
-    - text: Enter Track 1 (Sentinel)
-      link: /system-security-research-dossier/sentinel/mission/
-      icon: right-arrow
-      variant: primary
-    - text: Enter Track 2 (Hyperion)
-      link: /system-security-research-dossier/hyperion/mission/
-      icon: external
-      variant: secondary
+
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+
+
 
 ## The Research Question
 
-Modern defense often treats the **Host** (OS/Process) and the **Network** (Packet/Wire) as separate silos. This research portfolio explores the **composition** of these two domains to create a unified defense architecture.
+Modern defense often treats the **Host** (OS), the **Network** (Wire), and **AI Agents** (Intent) as separate silos. This research portfolio explores the **composition** of these three domains to create a unified, intent-based defense architecture.
 
-<CardGrid>
-  <Card title="Track 1: Sentinel Runtime" icon="linux">
-    **Domain:** Host / Process / Syscall
-    <br/>
-    **Mechanism:** `ptrace` + Anomaly Detection
-    <br/>
-    **Focus:** Enforcing intent at the execution boundary. Sentinel prevents unauthorized syscall patterns and behavioral anomalies.
-    <br/>
-    [**Explore Sentinel Research →**](/system-security-research-dossier/sentinel/mission/)
-  </Card>
-  
-  <Card title="Track 2: Hyperion (Network)" icon="rocket">
-    **Domain:** Network / Driver / Packet
-    <br/>
-    **Mechanism:** `eBPF` + `XDP`
-    <br/>
-    **Focus:** Enforcing policy at the wire. Hyperion rejects malicious traffic in the NIC driver before the OS allocates memory.
-    <br/>
-    [**Explore Hyperion Research →**](/system-security-research-dossier/hyperion/mission/)
-  </Card>
-</CardGrid>
+---
+
+### Track 1: Sentinel Runtime (Host)
+
+**Domain:** Host / Process / Syscall
+<br/>
+**Mechanism:** `ptrace` + Anomaly Detection
+<br/>
+**Focus:** Enforcing intent at the execution boundary. Sentinel prevents unauthorized syscall patterns and behavioral anomalies.
+<br/>
+<LinkButton href="/system-security-research-dossier/sentinel/mission/" variant="primary" icon="right-arrow">Explore Sentinel Research</LinkButton>
+
+---
+
+### Track 2: Hyperion (Network)
+
+**Domain:** Network / Driver / Packet
+<br/>
+**Mechanism:** `eBPF` + `XDP`
+<br/>
+**Focus:** Enforcing policy at the wire. Hyperion rejects malicious traffic in the NIC driver before the OS allocates memory.
+<br/>
+<LinkButton href="/system-security-research-dossier/hyperion/mission/" variant="primary" icon="external">Explore Hyperion Research</LinkButton>
+
+---
+
+### Track 3: Telos (AI Security)
+
+**Domain:** AI Agents / LLM / Intent
+<br/>
+**Mechanism:** `eBPF LSM` + `LLM Verification`
+<br/>
+**Focus:** Preventing Indirect Prompt Injection by aligning system calls with high-level intent.
+<br/>
+<LinkButton href="/system-security-research-dossier/telos/mission/" variant="primary" icon="magnifier">Explore Telos Research</LinkButton>
+
+---
+
+### Field Notes (Side Research)
+
+**Status:** Exploratory / Academic
+<br/>
+**Focus:** Analysis of emerging threats and technologies (e.g., Post-Quantum Cryptography) beyond the core engineering tracks.
+<br/>
+<LinkButton href="/system-security-research-dossier/notes/post-quantum-cryptography-strategy/" variant="secondary" icon="open-book">Read Latest Note</LinkButton>
 
 ---
 
 ## Technical Stack
 
-| Dimension | Sentinel (Host) | Hyperion (Network) |
-| :--- | :--- | :--- |
-| **Language** | Python / C | C (eBPF) / Go |
-| **Hook Point** | `ptrace` (Syscall) | `XDP` (Ingress) |
-| **Latency** | Millisecond | Nanosecond |
-| **State** | **Active (Phase M3.4)** | **Active (Phase M5.0)** |
-| **Latest** | Sentinel: [Mission Brief](/system-security-research-dossier/sentinel/mission/) | Hyperion: [M5 Report](/system-security-research-dossier/hyperion/m5-report) |
+| Dimension | Sentinel (Host) | Hyperion (Network) | Telos (Agent) |
+| :--- | :--- | :--- | :--- |
+| **Language** | Python / C | C (eBPF) / Go | Python / C (eBPF) |
+| **Hook Point** | `ptrace` (Syscall) | `XDP` (Ingress) | `LSM` (Kernel) |
+| **Latency** | Millisecond | Nanosecond | Variable |
+| **State** | **Active (Phase M3.4)** | **Active (Phase M5.0)** | **Active (Phase 1)** |
+| **Latest** | Sentinel: [Mission Brief](/system-security-research-dossier/sentinel/mission/) | Hyperion: [M5 Report](/system-security-research-dossier/hyperion/m5-report) | Telos: [Phase 1](/system-security-research-dossier/telos/mission/) |
+
+---
+## About the Researcher
+
+**Nevin** is an **Undergraduate Systems Researcher** focused on the intersection of **Runtime Enforcement** and **Kernel Datapath Security**.
+
+Currently a Computer Science & Engineering student at **AJCE (Kanjirapally)**, he is a German citizen building unified defense architectures that close the semantic gap between high-level intent and low-level execution.
+
+### Core Competencies
+
+#### Systems Programming (C / eBPF)
+* **Kernel Hooks:** Experience with ptrace for syscall interception and XDP (eXpress Data Path) for nanosecond-scale packet filtering.
+* **Memory Safety:** Writing hook-safe C code for eBPF verifiers (bounded loops, stack limits).
+* **Low-Level Linux:** Deep understanding of the proc filesystem, namespaces, and standard streams.
+
+#### Security Engineering
+* **Sentinel Runtime:** Architected a host-based intrusion detection system (HIDS) capable of identifying logical anomalies in process execution trees.
+* **Hyperion Firewall:** Designed a stateful firewall operating entirely in the NIC driver context using eBPF maps.
+* **Telos Architecture:** Pioneering "Intent-Based" security for Autonomous AI Agents.
+
+#### Full-Stack & Tooling
+* **Languages:** Python (Analysis Engines), Java (Spring), Go (Daemons).
+* **DevOps:** Docker containerization for isolated agent environments.
+* **Research:** Active contributor to the open-source security community with a focus on reproducibility.
+
+<LinkButton href="https://nevinshine.github.io" variant="secondary" icon="external">Visit Full Portfolio</LinkButton>
 
 
