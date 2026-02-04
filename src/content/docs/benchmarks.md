@@ -16,13 +16,13 @@ This document consolidates performance benchmarks across all research tracks.
 
 | Label | Meaning |
 |-------|---------|
-| 🟢 **[MEASURED]** | Actual benchmark data collected from running systems |
-| 🟡 **[ESTIMATED]** | Derived from architectural analysis, not yet measured |
-| 🔴 **[PENDING]** | Requires implementation before measurement is possible |
+| **[MEASURED]** | Actual benchmark data collected from running systems |
+| **[ESTIMATED]** | Derived from architectural analysis, not yet measured |
+| **[PENDING]** | Requires implementation before measurement is possible |
 
 ---
 
-## 🔥 Head-to-Head Comparison 🟢 [MEASURED]
+## Head-to-Head Comparison [MEASURED]
 
 > **Real benchmark data** collected 2026-02-05 using `scripts/head_to_head.py`. This is the definitive comparison between Sentinel (ptrace-based) and Hyperion (eBPF/XDP-based) architectures.
 
@@ -30,11 +30,11 @@ This document consolidates performance benchmarks across all research tracks.
 
 | Benchmark | Sentinel | Hyperion |
 |-----------|----------|----------|
-| **Syscall Storm** | 🔴 -95.6% | 🟢 +1.3% |
-| **File I/O** | 🔴 -93.3% | 🟢 ~0% |
-| **Process Creation** | 🔴 -78.1% | 🟢 ~0% |
-| **Network (UDP)** | 🔴 -93.0% | 🔴 -5.1% |
-| **Memory Alloc** | 🟢 -0.4% | 🟢 -0.4% |
+| **Syscall Storm** | -95.6% | +1.3% |
+| **File I/O** | -93.3% | ~0% |
+| **Process Creation** | -78.1% | ~0% |
+| **Network (UDP)** | -93.0% | -5.1% |
+| **Memory Alloc** | -0.4% | -0.4% |
 
 ### Raw Throughput Numbers
 
@@ -60,16 +60,16 @@ This document consolidates performance benchmarks across all research tracks.
 
 ---
 
-## Hyperion XDP Benchmarks 🟢 [MEASURED]
+## Hyperion XDP Benchmarks [MEASURED]
 
 > Real measurements from M5.0 testing with stateful TCP flow tracking.
 
 | Metric | Baseline | DPI Mode | Header-Only | Status |
 |--------|----------|----------|-------------|--------|
-| **Throughput** | 64.3 Gbps | 65.3 Gbps | 63.4 Gbps | 🟢 MEASURED |
-| **Latency (RTT)** | 67 ns | 136 ns | 69 ns | 🟢 MEASURED |
-| **Detection Accuracy** | 70% | 75% | 60% | 🟢 MEASURED |
-| **CPU Utilization** | 184.9% | 171.9% | 174.9% | 🟢 MEASURED |
+| **Throughput** | 64.3 Gbps | 65.3 Gbps | 63.4 Gbps | MEASURED |
+| **Latency (RTT)** | 67 ns | 136 ns | 69 ns | MEASURED |
+| **Detection Accuracy** | 70% | 75% | 60% | MEASURED |
+| **CPU Utilization** | 184.9% | 171.9% | 174.9% | MEASURED |
 
 **Source:** [Hyperion M5 Report](/hyperion/m5-report/)
 
@@ -81,7 +81,7 @@ This document consolidates performance benchmarks across all research tracks.
 
 ---
 
-## Sentinel Runtime Metrics 🟢 [MEASURED]
+## Sentinel Runtime Metrics [MEASURED]
 
 > Real measurements collected 2026-02-04 using `scripts/sentinel_benchmark.py`.
 
@@ -89,9 +89,9 @@ This document consolidates performance benchmarks across all research tracks.
 
 | Metric | Mean | P95 | P99 | Status |
 |--------|------|-----|-----|--------|
-| **SemanticMapper.classify()** | 1.1 μs | 1.3 μs | 2.3 μs | 🟢 MEASURED |
-| **ExfiltrationDetector.process_event()** | 0.9 μs | 1.1 μs | 2.0 μs | 🟢 MEASURED |
-| **Full Decision Loop** | 1.8 μs | 2.4 μs | 3.0 μs | 🟢 MEASURED |
+| **SemanticMapper.classify()** | 1.1 μs | 1.3 μs | 2.3 μs | MEASURED |
+| **ExfiltrationDetector.process_event()** | 0.9 μs | 1.1 μs | 2.0 μs | MEASURED |
+| **Full Decision Loop** | 1.8 μs | 2.4 μs | 3.0 μs | MEASURED |
 
 ### Stress Test Results (Torture Chamber)
 
@@ -108,16 +108,16 @@ This document consolidates performance benchmarks across all research tracks.
 
 ---
 
-## Telos Control Plane Metrics 🔴 [PENDING]
+## Telos Control Plane Metrics [PENDING]
 
 > Projections from protocol design. Telos is still in Phase 1.
 
 | Metric | Projected Value | Confidence | Status |
 |--------|-----------------|------------|--------|
-| **gRPC Message Latency** | ~1-5 ms | Medium | 🔴 PENDING |
-| **Intent Verification (LLM)** | ~100-2000 ms | Low | 🔴 PENDING |
-| **Policy Propagation** | ~10-50 ms | Low | 🔴 PENDING |
-| **Taint Report Processing** | ~5-20 ms | Low | 🔴 PENDING |
+| **gRPC Message Latency** | ~1-5 ms | Medium | PENDING |
+| **Intent Verification (LLM)** | ~100-2000 ms | Low | PENDING |
+| **Policy Propagation** | ~10-50 ms | Low | PENDING |
+| **Taint Report Processing** | ~5-20 ms | Low | PENDING |
 
 ---
 
@@ -126,32 +126,32 @@ This document consolidates performance benchmarks across all research tracks.
 | Dimension | Hyperion | Sentinel | Telos |
 |-----------|----------|----------|-------|
 | **Layer** | Network (L3-L7) | Host (Syscall) | Application (Intent) |
-| **Policy Decision Latency** | 67-136 ns 🟢 | 1.8 μs 🟢 | ~100-2000 ms 🔴 |
-| **System Overhead** | ~0% 🟢 | 78-95% 🔴 | N/A |
+| **Policy Decision Latency** | 67-136 ns | 1.8 μs | ~100-2000 ms |
+| **System Overhead** | ~0% | 78-95% | N/A |
 | **Detection Method** | Signature + State | Behavior + Policy | Semantic Alignment |
-| **Production Ready** | ✅ Yes | ⚠️ Analysis only | 🔴 Not yet |
+| **Production Ready** | Yes | Analysis only | Not yet |
 
 ---
 
-## Joint Detection Scenarios 🟢 [MEASURED]
+## Joint Detection Scenarios [MEASURED]
 
 ### Scenario 1: C2 Exfiltration
 | Time | System | Event | Latency |
 |------|--------|-------|---------|
-| T+0 | Hyperion | Outbound SYN flagged | 136ns 🟢 |
-| T+2μs | Sentinel | Sensitive file read | 1.8μs 🟢 |
-| T+4μs | Sentinel | Network connect | 1.8μs 🟢 |
-| T+4.1μs | Hyperion | Block + Alert | 136ns 🟢 |
+| T+0 | Hyperion | Outbound SYN flagged | 136ns |
+| T+2μs | Sentinel | Sensitive file read | 1.8μs |
+| T+4μs | Sentinel | Network connect | 1.8μs |
+| T+4.1μs | Hyperion | Block + Alert | 136ns |
 
 **Total Latency:** ~5 μs
 
 ### Scenario 2: Ransomware Detection
 | Time | System | Event | Latency |
 |------|--------|-------|---------|
-| T+0 | Hyperion | Inbound payload | 67ns 🟢 |
-| T+2μs | Sentinel | execve detected | 1.8μs 🟢 |
-| T+4μs | Sentinel | Rapid file I/O | 1.8μs 🟢 |
-| T+6μs | Sentinel | Block unlink | 1.8μs 🟢 |
+| T+0 | Hyperion | Inbound payload | 67ns |
+| T+2μs | Sentinel | execve detected | 1.8μs |
+| T+4μs | Sentinel | Rapid file I/O | 1.8μs |
+| T+6μs | Sentinel | Block unlink | 1.8μs |
 
 **Total Latency:** ~6 μs
 
@@ -174,9 +174,9 @@ All benchmark scripts are available in the repository:
 
 | Runtime | Use Case | Overhead | Verdict |
 |---------|----------|----------|---------|
-| **Hyperion** | Production network defense | ~0% | ✅ Deploy everywhere |
-| **Sentinel** | Malware analysis, forensics | 78-95% | ⚠️ Targeted use only |
-| **Combined** | Defense in depth | Layered | 🎯 Best of both worlds |
+| **Hyperion** | Production network defense | ~0% | Deploy everywhere |
+| **Sentinel** | Malware analysis, forensics | 78-95% | Targeted use only |
+| **Combined** | Defense in depth | Layered | Best of both worlds |
 
 > [!IMPORTANT]
 > **Thesis Validation:** The head-to-head benchmarks confirm the architectural hypothesis — eBPF (Hyperion) is suitable for production, while ptrace (Sentinel) provides deep visibility at the cost of performance. Both are complementary, not competing.
