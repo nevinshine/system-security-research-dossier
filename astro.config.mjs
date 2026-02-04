@@ -24,6 +24,15 @@ export default defineConfig({
             customCss: ['./src/styles/custom.css'],
 
             sidebar: [
+                // Cross-Project Analysis (NEW)
+                {
+                    label: 'Cross-Project Analysis',
+                    items: [
+                        { label: 'Unified Benchmarks', link: '/benchmarks' },
+                        { label: 'MITRE ATT&CK Mapping', link: '/mitre-attack-mapping' },
+                        { label: 'Threat Correlation Engine', link: '/correlation-engine' },
+                    ],
+                },
                 {
                     label: 'Track 1: Sentinel (Host)',
                     items: [
@@ -61,10 +70,12 @@ export default defineConfig({
                         // 5. Research Updates
                         {
                             label: 'Milestones',
+                            collapsed: true,
                             autogenerate: { directory: 'sentinel/milestones' }
                         },
                         {
                             label: 'Research Logs',
+                            collapsed: true,
                             autogenerate: { directory: 'sentinel/logs' }
                         },
                     ],
@@ -82,10 +93,12 @@ export default defineConfig({
                         // Research Updates
                         {
                             label: 'Milestones',
+                            collapsed: true,
                             autogenerate: { directory: 'hyperion/milestones' }
                         },
                         {
                             label: 'Research Logs',
+                            collapsed: true,
                             autogenerate: { directory: 'hyperion/logs' }
                         },
 
@@ -95,6 +108,16 @@ export default defineConfig({
                     label: 'Track 3: Telos (AI Security)',
                     items: [
                         { label: 'Mission Brief', link: '/telos/mission' },
+                        {
+                            label: 'Milestones',
+                            collapsed: true,
+                            autogenerate: { directory: 'telos/milestones' }
+                        },
+                        {
+                            label: 'Research Logs',
+                            collapsed: true,
+                            autogenerate: { directory: 'telos/logs' }
+                        },
                     ],
                 },
                 {

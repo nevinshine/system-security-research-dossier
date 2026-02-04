@@ -54,8 +54,6 @@ Attacker -> Network Interface -> XDP Hook -> Hyperion Engine
 
 ---
 
----
-
 ## Research Roadmap
 
 We define success through distinct capability milestones.

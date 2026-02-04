@@ -14,7 +14,7 @@ description: Host-Based Runtime Security (Active Defense)
 
 **Sentinel Runtime** is a Linux host-based defense system focused on syscall-level monitoring and cross-process taint tracking. By establishing a closed-loop control system via `ptrace`, Sentinel connects a high-speed C interception engine to a Python-based **Cognitive Engine** to enforce security policies in real-time.
 
-> **[Read the MITRE Mapping](https://www.google.com/search?q=docs/MITRE_MAPPING.md)** - A technical deep-dive into how Sentinel aligns with the ATT&CK framework.
+> **[Read the MITRE Mapping](/system-security-research-dossier/mitre-attack-mapping/)** — Technical alignment with the ATT&CK framework.
 
 ### M2.1: Universal Active Defense (Live Demo)
 
@@ -48,7 +48,7 @@ Sentinel operates as a modular closed-loop runtime control system:
 
 ### 2. Analysis Layer (Python / Data Space)
 
-* **Neural Engine (brain.py):** The decision center. Parses **SYSCALL:verb:arg** signals and issues Block/Allow verdicts.
+* **Brain (brain.py):** The decision center. Parses **SYSCALL:verb:arg** signals and issues Block/Allow verdicts.
 * **Mock Brain (mock_brain.py):** Lightweight testing tool for engine validation.
 
 ---
@@ -59,7 +59,7 @@ Sentinel operates as a modular closed-loop runtime control system:
 
 ```bash
 $ python3 src/analysis/brain.py
-+ [INFO] Neural Engine Online.
++ [INFO] Brain Online.
 + [LOG] Action: execve | Path: /bin/sh
 - [ALERT] BLOCKED THREAT: unlink -> protected.txt
 ```
