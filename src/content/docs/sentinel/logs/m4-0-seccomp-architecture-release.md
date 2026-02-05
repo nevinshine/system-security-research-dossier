@@ -1,5 +1,5 @@
 ---
-title: "m4-0-seccomp-architecture-release"
+title: "M4.0 Seccomp Architecture Release"
 date: 2026-02-05
 tldr: "Transitioned from ptrace to Seccomp-BPF. Validated 1.3M OPS throughput and hardened against io_uring/eBPF threats. Published Technical Report."
 ---
