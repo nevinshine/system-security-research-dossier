@@ -1,5 +1,5 @@
 ---
-title: "M3.5 - Socket & Descriptor Resolution"
+title: "M3.5: Socket & Descriptor Resolution"
 date: 2026-02-02
 tldr: "Built the 'fdmap' engine to correlate Host PIDs with Network Sockets (Inode Mapping)."
 ---

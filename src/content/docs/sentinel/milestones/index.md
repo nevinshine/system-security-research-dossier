@@ -15,6 +15,7 @@ This section documents major milestones achieved in Sentinel Runtime development
 | **M2.1** | ✅ Operational | Universal Extraction & VFORK Support |
 | **M3.0** | 🔄 In Progress | Semantic Bucketing (Cognitive Engine) |
 | **M3.4** | ✅ Complete | Persistence + Canonicalization |
+| **M4.0** | ✅ Complete | Seccomp Architecture + Anti-Evasion |
 
 ---
 

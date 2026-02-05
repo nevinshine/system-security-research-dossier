@@ -1,5 +1,5 @@
 ---
-title: "M3.6 - Auto-DLP Bridge"
+title: "M3.6: Auto-DLP Bridge"
 date: 2026-02-03
 tldr: "Connects Host Events to Network Firewall (Hyperion XDP)."
 ---
