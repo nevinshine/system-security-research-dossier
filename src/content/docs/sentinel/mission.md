@@ -53,7 +53,7 @@ Sentinel operates as a modular closed-loop runtime control system:
 
 ---
 
-## [ 0x04 ] EXECUTION CONTROL LOOP (M3.4)
+## EXECUTION CONTROL LOOP (M3.4)
 
 **Terminal 1 (The Brain):**
 
